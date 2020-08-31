@@ -1,6 +1,9 @@
+"""
+    Tests for pdfmerger.
+"""
 
-import pdfmerger
 import unittest
+import pdfmerger
 
 
 class BasicTestCase(unittest.TestCase):
