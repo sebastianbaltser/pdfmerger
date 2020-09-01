@@ -53,26 +53,18 @@ def strip_title(string):
     """Removes everything in parenthesis or brackets."""
     return re.sub(r'[\(\[][^()]*[\)\]]', '', string)
 
-if __name__ == "__main__":
-    directory = os.environ["dir"]
-    os.chdir(directory)
-	 
-    mergeFilename = os.environ["filename"]
-    if mergeFilename[-4:] != '.pdf':
-        mergeFilename = mergeFilename + '.pdf'
-
-    merge(directory, mergeFilename)
-
-
 @click.command()
-@click.option("")
-def main(*args, **kwargs):
+@click.option("--directory", help="Location of PDF-files")
+@click.option("-output", help="Name of output PDF-file")
+def main(directory, output):
     """pdfmerger Console Script."""
-    click.echo("Replace this message by putting your code into "
-               "pdfmerger.py")
-    click.echo("See click documentation at http://click.pocoo.org/")
+
+    if output[-4:] != '.pdf':
+        output = output + '.pdf'
+
+    pdfmerge(directory, output)
+
     return 0
 
-
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
