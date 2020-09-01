@@ -1,3 +1,5 @@
+# pylint: disable=E1120 #No value for argument ...
+
 """
 Script that merges PDF-files
 """
