@@ -17,6 +17,9 @@ def merge(directory, mergeFilename):
 
     pdf_files.sort(key=str.lower)
 
+    # Sort by modification date
+    pdf_files.sort(key=os.path.getctime)
+
     pdf_writer = PyPDF2.PdfFileWriter()
 
     writer_page_num = 0
