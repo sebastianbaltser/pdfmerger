@@ -12,10 +12,14 @@ import click
 
 import PyPDF2
 
-def merge(directory, mergeFilename):
-    pdf_files = [fn for fn in os.listdir('.') if (fn.endswith('.pdf') and not fn == mergeFilename)]
+def pdfmerge(directory, output_filename):
+    os.chdir(directory)
 
-    pdf_files.sort(key=str.lower)
+    pdf_files = os.listdir('.')
+    # Only pertain pdf files
+    pdf_files = [fn for fn in pdf_files if fn.endswith('.pdf')]
+    # Remove the file that was previously created by the script
+    pdf_files = [fn for fn in pdf_files if fn != output_filename]
 
     # Sort by modification date
     pdf_files.sort(key=os.path.getctime)
