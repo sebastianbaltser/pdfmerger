@@ -6,13 +6,15 @@ Script that merges PDF-files
 
 import os
 import re
-import sys
-
 import click
-
 import PyPDF2
 
 def pdfmerge(directory, output_filename):
+    """
+        Merges every pdf-file in the supplied directory.
+        Ignores pdf-file that has the same filename as output_filename.
+        Saves merged pdf-file to the same directory with filename output_filename.
+    """
     os.chdir(directory)
 
     pdf_files = os.listdir('.')
@@ -42,7 +44,7 @@ def pdfmerge(directory, output_filename):
                         pdf_writer.addBookmark(filename[:-4], writer_page_num)
                 writer_page_num += 1
 
-            with open(mergeFilename, 'wb') as pdf_output:
+            with open(output_filename, 'wb') as pdf_output:
                 pdf_writer.write(pdf_output)
                 pdf_writer.addBlankPage()
                 writer_page_num += 1
