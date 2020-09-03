@@ -51,7 +51,7 @@ def pdfmerge(directory, output_filename):
 
 def strip_title(string):
     """Removes everything in parenthesis or brackets."""
-    return re.sub(r'[\(\[][^()]*[\)\]]', '', string)
+    return re.sub(r'[\(\[][^()]*[\)\]]', '', string).strip()
 
 @click.command()
 @click.option("--directory", help="Location of PDF-files")
