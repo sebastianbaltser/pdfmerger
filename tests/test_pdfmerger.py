@@ -1,23 +1,18 @@
 """
     Tests for pdfmerger.
 """
-
 import unittest
-import pdfmerger
+
+import src.pdfmerger.pdfmerger as pdfmerger
 
 
-class BasicTestCase(unittest.TestCase):
+class StripTitleTest(unittest.TestCase):
     """ Basic test cases """
 
     def test_basic(self):
-        """ check True is True """
-        self.assertTrue(True)
-
-    def test_version(self):
-        """ check pdfmerger exposes a version attribute """
-        self.assertTrue(hasattr(pdfmerger, "__version__"))
-        self.assertIsInstance(pdfmerger.__version__, str)
-
+        """ check that the function works for a basic case """
+        result = pdfmerger.strip_title("Interesting title (123) [321]")
+        self.assertEqual("Interesting title", result)
 
 if __name__ == "__main__":
     unittest.main()
